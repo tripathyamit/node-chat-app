@@ -19,6 +19,17 @@ app.use(express.static(publicPath));
    socket.on('disconnect',()=>{
      console.log("Disconnected from client User")
    })
+
+   socket.on('createMessage',(res)=>{
+     console.log('create Message',res)
+     
+   })
+   socket.emit('newMessage',{from: 'server jane',
+      message:'see you then',
+      createdAt:'11223344'
+    })
+
+
  })
 
 
