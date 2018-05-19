@@ -22,12 +22,17 @@ app.use(express.static(publicPath));
 
    socket.on('createMessage',(res)=>{
      console.log('create Message',res)
+     io.emit('newMessage',{
+       from:res.from,
+       to : res.message,
+       createdAt: new Date().getTime()
+     })
      
    })
-   socket.emit('newMessage',{from: 'server jane',
-      message:'see you then',
-      createdAt:'11223344'
-    })
+  //  socket.emit('newMessage',{from: 'server jane',
+  //     message:'see you then',
+  //     createdAt:'11223344'
+  //   })
 
 
  })
