@@ -24,9 +24,10 @@ io=socketIO(server)
       socket.broadcast.emit('newMessage',generateMessage('Admin','New User Joined'))
    
 
-      socket.on('createMessage',(res)=>{
+      socket.on('createMessage',(res,callback)=>{
         console.log('create Message',res)
         io.emit('newMessage',generateMessage(res.from,res.message))
+        callback('This is from server');
         
       })
 
